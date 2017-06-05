@@ -2,6 +2,7 @@
   "name": "library",
   "version": "1.0.0",
   "description": "A base library from which other libraries can be derived",
+  "private": false,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
