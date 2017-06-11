@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A base library from which other libraries can be derived",
   "private": false,
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "index.js",
+  "types": "types/index.d.ts",
   "engines": {
     "node": "~6.10.3",
     "npm": "~3.10.10"
@@ -14,8 +14,7 @@
     "postversion": "git push && git push --tags && npm publish",
     "build": "webpack",
     "build:watch": "npm run build -- --watch",
-    "clean": "rimraf .awcache && rimraf build/* && rimraf lib/*",
-    "copy_build_to_lib": "mkdirp lib && cpr build/types/src/index.d.ts lib/index.d.ts --overwrite && cpr build/lib/ lib/ --overwrite",
+    "clean": "rimraf .awcache && rimraf index.js* && rimraf types",
     "execute": "ts-node -r @player1os/bluebird-global -r tsconfig-paths/register",
     "lint": "tslint {./,src/**/,test/**/}*.ts --type-check --project ./tsconfig.json",
     "lint:watch": "chokidar src/**/*.ts test/**/*.ts -c \"npm run lint\" --initial --silent",
@@ -44,6 +43,7 @@
     "@types/chai": "^4.0.0",
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.21",
+    "@types/rimraf": "0.0.28",
     "@types/webpack": "^2.2.15",
     "@types/webpack-env": "^1.13.0",
     "awesome-typescript-loader": "^3.1.3",
