@@ -1,5 +1,7 @@
 # Build generated files.
-build/*
+types/*
+index.js
+index.js.map
 
 # Compile generated files.
 .awcache/*
@@ -8,9 +10,10 @@ build/*
 node_modules/*
 npm-debug.log*
 
-# Published files.
-lib/*
-
 # OS specific files.
 .DS_Store
 Thumbs.db
+
+# Test coverage cache.
+.nyc_output
+coverage

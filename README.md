@@ -36,10 +36,8 @@ or `git remote add base https://github.com/Player1os/node-js-library.git`.
 ## Updating the new library with changes from the base
 
 Follow these instructions to update the new library:
-
-1. Fetch the base repository's branches `git fetch base`.
-2. Make sure you are in the library's master branch `git checkout master`.
-3. Rebase the library's master branch to the base repository's master `git rebase upstream/master`.
+1. Make sure you are in the library's master branch `git checkout master`.
+2. Rebase the library's master branch to the base repository's master `git pull --rebase base master`.
 
 ## Debugging
 
