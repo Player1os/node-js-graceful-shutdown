@@ -10,11 +10,11 @@
     "npm": "~3.10.10"
   },
   "scripts": {
-    "preversion": "git checkout . && git checkout master && git pull && npm run validate && npm run clean && npm run build",
+    "preversion": "git checkout . && git checkout master && git pull && npm run clean && npm run validate",
     "postversion": "git push && git push --tags && npm publish",
     "build": "webpack",
     "build:watch": "npm run build -- --watch",
-    "clean": "rimraf .awcache && rimraf index.js* && rimraf types",
+    "clean": "rimraf index.js* && rimraf types",
     "execute": "ts-node -r @player1os/bluebird-global -r module-alias/register",
     "lint": "tslint {./,src/**/,test/**/}*.ts --type-check --project ./tsconfig.json",
     "lint:watch": "chokidar src/**/*.ts test/**/*.ts -c \"npm run lint\" --initial --silent",
