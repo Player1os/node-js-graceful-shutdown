@@ -35,6 +35,7 @@ const execute = async () => {
 }
 
 // Invoke the initialization function.
+// tslint:disable-next-line:no-floating-promises
 execute()
 	.catch((err) => {
 		// Crash and report the error on failure.
