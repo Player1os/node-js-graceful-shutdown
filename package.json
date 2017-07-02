@@ -21,7 +21,7 @@
     "test": "npm run execute -- test/index.ts",
     "test:coverage": "nyc npm test",
     "test:watch": "chokidar src/**/*.ts test/**/*.ts -c \"npm test\" --initial --silent",
-    "validate": "npm run clean && npm run lint && npm run build && npm run build && npm test"
+    "validate": "npm run clean && npm run build && npm run lint && npm run build && npm test"
   },
   "repository": {
     "type": "git",
