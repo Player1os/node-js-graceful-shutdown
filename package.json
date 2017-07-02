@@ -10,7 +10,7 @@
     "npm": "~3.10.10"
   },
   "scripts": {
-    "preversion": "git checkout . && git checkout master && git pull && npm run clean && npm run validate",
+    "preversion": "npm run validate && git checkout . && git checkout master && git pull",
     "postversion": "git push && git push --tags && npm publish",
     "build": "webpack",
     "build:watch": "npm run build -- --watch",
@@ -21,7 +21,7 @@
     "test": "npm run execute -- test/index.ts",
     "test:coverage": "nyc npm test",
     "test:watch": "chokidar src/**/*.ts test/**/*.ts -c \"npm test\" --initial --silent",
-    "validate": "npm run lint && npm run build && npm test"
+    "validate": "npm run clean && npm run lint && npm run build && npm run build && npm test"
   },
   "repository": {
     "type": "git",
