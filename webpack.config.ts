@@ -42,7 +42,7 @@ class TypescriptDeclarationFilePlugin {
 							// Replace the aliased paths with relative paths within the current module.
 							const depthSubPath = '../'.repeat(depth)
 							const alteredContents = fs.readFileSync(filePath, 'utf-8').replace(/...\/src\//g, `./${depthSubPath}`)
-							fs.writeFileSync(filePath, alteredContents, 'utf-8')
+							fs.writeFileSync(filePath, alteredContents, { encoding: 'utf-8' })
 						})
 				}
 			})
@@ -68,7 +68,7 @@ export default {
 	// Specify the target to be the node runtime.
 	target: 'node',
 	// Specify that all standard dependencies should be considered exterals to be dynamically included.
-	externals: Object.keys(packageJson.dependencies || {})
+	externals: Object.keys('dependencies' in packageJson ? packageJson.dependencies : {})
 		.reduce((externals, dependencyName) => {
 			externals[dependencyName] = `commonjs ${dependencyName}`
 			return externals
