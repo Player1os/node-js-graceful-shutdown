@@ -1,4 +1,4 @@
-# NodeJS Library
+# NPM Package
 
 This project serves as a template for any library compiled to be published in npm and consumed in a node js environment.
 

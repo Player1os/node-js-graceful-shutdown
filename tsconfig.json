@@ -8,7 +8,16 @@
 			".../*": [
 				"./*"
 			]
-		}
+		},
+		"typeRoots": [
+			"node_modules/@types",
+			"src/@types"
+		]
 	},
-	"extends": "./node_modules/@player1os/tsconfig/tsconfig"
+	"exclude": [
+		"dist",
+		"node_modules",
+		"types"
+	],
+	"extends": "./node_modules/@player1os/tsconfig/index"
 }

@@ -2,10 +2,10 @@
 .vscode/
 coverage/
 src/
-test/
 .gitignore
 .node-version
 README.md
+tsconfig-create.json
+tsconfig-validate.json
 tsconfig.json
 tslint.json
-webpack.config.ts
