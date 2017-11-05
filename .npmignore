@@ -2,6 +2,7 @@
 .vscode/
 coverage/
 src/
+test/
 .gitignore
 .node-version
 README.md
