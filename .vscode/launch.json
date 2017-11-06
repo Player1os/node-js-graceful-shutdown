@@ -8,7 +8,11 @@
 		"type": "node",
 		"request": "launch",
 		"args": ["${relativeFile}"],
-		"runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+		"runtimeArgs": [
+			"--nolazy",
+			"-r", "ts-node/register",
+			"-r", "@player1os/npm-package-support/register"
+		],
 		"sourceMaps": true,
 		"cwd": "${workspaceRoot}",
 		"protocol": "inspector"
