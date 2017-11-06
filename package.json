@@ -45,7 +45,6 @@
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.44",
     "@types/node": "^8.0.47",
-    "@types/webpack": "^3.0.14",
     "chai": "^4.1.2",
     "chokidar-cli": "^1.2.0",
     "mocha": "^4.0.1",
