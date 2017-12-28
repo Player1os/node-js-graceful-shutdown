@@ -1,7 +1,7 @@
 {
-  "name": "@player1os/npm-package",
-  "version": "0.0.0",
-  "description": "A base project from which npm packages can be derived",
+  "name": "@player1os/graceful-shutdown",
+  "version": "1.0.0",
+  "description": "Allows node applications to handle asynchronous resource deallocation and termination before shutting down",
   "private": false,
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Player1os/npm-package.git"
+    "url": "git+https://github.com/Player1os/node-js-graceful-shutdown.git"
   },
   "keywords": [
     "npm",
@@ -33,9 +33,9 @@
   "author": "Osama Hassanein <player1os@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Player1os/npm-package/issues"
+    "url": "https://github.com/Player1os/node-js-graceful-shutdown/issues"
   },
-  "homepage": "https://github.com/Player1os/npm-package#readme",
+  "homepage": "https://github.com/Player1os/node-js-graceful-shutdown#readme",
   "devDependencies": {
     "@player1os/npm-package-support": "^1.1.9",
     "@player1os/nyc-config": "^1.0.0",
