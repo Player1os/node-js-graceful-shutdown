@@ -1,6 +1,6 @@
 {
   "name": "@player1os/graceful-shutdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allows node applications to handle asynchronous resource deallocation and termination before shutting down",
   "private": false,
   "main": "dist/index.js",
