@@ -1,4 +1,34 @@
-export default (callback: () => Promise<void>, timeout: number) => {
+// Load npm modules.
+import * as bluebird from 'bluebird'
+import * as dotenv from 'dotenv'
+import * as raven from 'raven'
+import * as sourceMapSupport from 'source-map-support'
+
+export const initialize = (callback: () => Promise<void>, timeout: number, sentryDsn?: string) => {
+	// Add support for source-maps.
+	sourceMapSupport.install()
+
+	// Load bluebird as the global promise library.
+	global.Promise = bluebird
+
+	// Load environment variables.
+	dotenv.config()
+
+	// Setup the error reporter.
+	if (sentryDsn !== undefined) {
+		raven.config(sentryDsn).install()
+	}
+
+	// Termination signals.
+	const terminationSignals: NodeJS.Signals[] = [
+		// Add a listener for TERM signal .e.g. kill.
+		'SIGTERM',
+		// Add a listener for INT signal e.g. Ctrl-C.
+		'SIGINT',
+		'SIGHUP',
+		'SIGBREAK',
+	]
+
 	// Define the shutdown process variable.
 	let isShutdownInitiated = false
 	let mainError: Error | null = null
@@ -24,12 +54,14 @@ export default (callback: () => Promise<void>, timeout: number) => {
 		}
 
 		// Disable all listeners that where previously set.
-		process.removeAllListeners('SIGTERM')
-		process.removeAllListeners('SIGINT')
+		for (const terminationSignal of terminationSignals) {
+			process.removeAllListeners(terminationSignal)
+		}
 		process.removeAllListeners('message')
 		process.removeAllListeners('uncaughtException')
 
-		// Asure the process is properly exited.
+
+		// Assure the process is properly exited.
 		console.log('[SHUTDOWN] Exiting ...') // tslint:disable-line:no-console
 		if ((mainError !== null) || (capturedErrors.length > 0)) {
 			process.exitCode = -1
@@ -80,29 +112,32 @@ export default (callback: () => Promise<void>, timeout: number) => {
 	}
 
 	// Add a listener for TERM signal .e.g. kill.
-	process.on('SIGTERM', () => {
-		initiateShutdown()
-	})
-
-	// Add a listener for INT signal e.g. Ctrl-C.
-	process.on('SIGINT', () => {
-		initiateShutdown()
-	})
+	for (const terminationSignal of terminationSignals) {
+		process.on(terminationSignal, () => {
+			initiateShutdown()
+		})
+	}
 
 	// Add a listener for windows specific shutdown events.
-	process.on('message', (message) => {
+	process.on('message', (message: string) => {
 		if (message === 'shutdown') {
 			initiateShutdown()
 		}
 	})
 
-	// Add a listner for uncaught exceptions.
-	process.on('uncaughtException', (err) => {
+	// Add a listener for uncaught exceptions.
+	process.on('uncaughtException', (err: Error) => {
 		initiateShutdown(err)
 	})
 
-	// Add a listner for uncaught rejections.
-	process.on('unhandledRejection', (err) => {
-		initiateShutdown(err)
+	// Makes the script crash on unhandled rejections instead of silently ignoring them.
+	process.on('unhandledRejection', (err: Error) => {
+		throw err
 	})
+}
+
+export const ready = () => {
+	if (process.send !== undefined) {
+		process.send('ready')
+	}
 }

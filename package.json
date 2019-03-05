@@ -1,60 +1,16 @@
 {
   "name": "@player1os/graceful-shutdown",
   "version": "1.0.1",
-  "description": "Allows node applications to handle asynchronous resource deallocation and termination before shutting down",
-  "private": false,
-  "main": "dist/index.js",
-  "types": "types/index.d.ts",
-  "engines": {
-    "node": "^8.x",
-    "npm": "^5.x"
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "dotenv": "^6.0.0",
+    "raven": "^2.6.4",
+    "source-map-support": "^0.5.9"
   },
-  "scripts": {
-    "preversion": "npm-package-preversion",
-    "postversion": "npm-package-postversion",
-    "start": "npm-package-start",
-    "build:watch": "npm-package-build-watch",
-    "build": "npm-package-build",
-    "clean": "npm-package-clean",
-    "lint:watch": "npm-package-lint-watch",
-    "lint": "npm-package-lint",
-    "test:watch": "npm-package-test-watch",
-    "test": "npm-package-test",
-    "validate": "npm-package-validate"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Player1os/node-js-graceful-shutdown.git"
-  },
-  "keywords": [
-    "npm",
-    "package"
-  ],
-  "author": "Osama Hassanein <player1os@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Player1os/node-js-graceful-shutdown/issues"
-  },
-  "homepage": "https://github.com/Player1os/node-js-graceful-shutdown#readme",
   "devDependencies": {
-    "@player1os/npm-package-support": "^1.1.10",
-    "@player1os/nyc-config": "^1.0.1",
-    "@player1os/tsconfig": "^1.0.11",
-    "@player1os/tslint-config": "^1.4.0",
-    "@types/bluebird-global": "^3.5.3",
-    "@types/chai": "^4.0.4",
-    "@types/mocha": "^2.2.44",
-    "@types/node": "^8.0.47",
-    "chai": "^4.1.2",
-    "chokidar-cli": "^1.2.0",
-    "mocha": "^4.0.1",
-    "nyc": "^11.3.0",
-    "ts-node": "^3.3.0",
-    "tslint": "^5.8.0",
-    "tsutils": "^2.12.1",
-    "typescript": "^2.5.3"
-  },
-  "nyc": {
-    "extends": "@player1os/nyc-config"
+    "@types/dotenv": "^4.0.3",
+    "@types/node": "^10.9.4",
+    "@types/raven": "^2.5.1",
+    "@types/source-map-support": "^0.4.1"
   }
 }
